@@ -1,13 +1,5 @@
 import './index.scss'
+import { createApp } from 'vue';
+import App from './App.vue'
 
-
-import m  from "mithril";
-
-import route from './route';
-
-export default class bladeui {
-    constructor(config:any){
-        var root=config.el;
-        m.route(root,"/",route)
-    }
-}
+createApp(App).mount('#app');

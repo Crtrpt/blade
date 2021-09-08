@@ -11,30 +11,26 @@ import image from '@rollup/plugin-image';
 // import multi from '@rollup/plugin-multi-entry';
 import { wasm } from '@rollup/plugin-wasm';
 import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
-import commonjs from '@rollup/plugin-commonjs';
+
+import alias from 'rollup-plugin-alias';
+import vue  from 'rollup-plugin-vue';
+import css from 'rollup-plugin-css-only';
 
 
 const env = process.env.NODE_ENV
+console.log("env:"+process.env.NODE_ENV)
 
 export default {
-  input: [
-    'src/main.ts',
-  ],
-  output:[
-    {
-      sourcemap: true,
-      // file: 'example/js/bundle.js',
-      dir: "public/js/module",
-      format:"es",
-      name:"bladeui"
-    }
-  ],
+  input: 'src/main.ts',
+  output: {
+    sourcemap: true,
+    file: "public/bundle.esm.js",
+    format:"esm",
+  },
   plugins: [
-    commonjs(),
     wasm(),
     image(),
-    // multi(),
-
+   
     scss(
       {
         output: 'public/css/bundle.css',
@@ -45,21 +41,32 @@ export default {
         watch: 'src/',
       }
     ),
-    sourcemaps(),
-    typescript(),
-    serve({
-      contentBase:"public"
+    alias({
+      resolve: [ '.js', '.ts' ],
+      entries: [
+        { find: 'vue', replacement: 'node_modules/vue/dist/vue.runtime.esm-browser.js' }
+      ]
     }),
-    livereload("public"),
+  
+    typescript(),
+    vue(
+      { needMap: false }
+    ),
+    css(),
+    serve({
+      contentBase:"./public"
+    }),
     resolve(),
     babel({ babelHelpers: 'bundled' }),
+    livereload("public"),
     replace({
       preventAssignment:true,
       'process.env.NODE_ENV': JSON.stringify(env)
     }),
     dynamicImportVars({
     }),
-    
+    sourcemaps(),
+   
   ]
 };
 
