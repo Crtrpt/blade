@@ -15,6 +15,7 @@ import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import alias from 'rollup-plugin-alias';
 import vue  from 'rollup-plugin-vue';
 import css from 'rollup-plugin-css-only';
+import cleaner from 'rollup-plugin-cleaner';
 
 
 const env = process.env.NODE_ENV
@@ -24,13 +25,17 @@ export default {
   input: 'src/main.ts',
   output: {
     sourcemap: true,
-    file: "public/bundle.esm.js",
+    dir:"public/js",
     format:"esm",
   },
   plugins: [
+    cleaner({
+      targets: [
+        './public/js'
+      ]
+    }),
     wasm(),
     image(),
-   
     scss(
       {
         output: 'public/css/bundle.css',
@@ -47,7 +52,6 @@ export default {
         { find: 'vue', replacement: 'node_modules/vue/dist/vue.runtime.esm-browser.js' }
       ]
     }),
-  
     typescript(),
     vue(
       { needMap: false }

@@ -1,5 +1,22 @@
 import './index.scss'
-import { createApp } from 'vue';
+import {createApp,h} from 'vue';
+import {createRouter,createWebHashHistory} from "vue-router";
+import route from "./route/index.js";
 import App from './App.vue'
 
-createApp(App).mount('#app');
+console.log(route);
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes:route
+})
+
+router.beforeEach((to, from) => {
+   return true;  
+})
+
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount('#app')
