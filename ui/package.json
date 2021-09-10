@@ -58,6 +58,9 @@
     "@tailwindcss/typography": "^0.4.1"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.4.1",
+    "@heroicons/vue": "^1.0.4",
+    "heroicons": "^0.4.2",
     "lodash": "^4.17.21",
     "miragejs": "^0.1.41",
     "tailwindcss": "^2.2.8",

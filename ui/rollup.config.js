@@ -15,7 +15,7 @@ import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import alias from 'rollup-plugin-alias';
 import vue  from 'rollup-plugin-vue';
 import css from 'rollup-plugin-css-only';
-import cleaner from 'rollup-plugin-cleaner';
+// import cleaner from 'rollup-plugin-cleaner';
 
 
 const env = process.env.NODE_ENV
@@ -29,11 +29,11 @@ export default {
     format:"esm",
   },
   plugins: [
-    cleaner({
-      targets: [
-        './public/js'
-      ]
-    }),
+    // cleaner({
+    //   targets: [
+    //     './public/js'
+    //   ]
+    // }),
     wasm(),
     image(),
     scss(
