@@ -65,6 +65,7 @@
     "miragejs": "^0.1.41",
     "tailwindcss": "^2.2.8",
     "vue": "^3.2.10",
-    "vue-router": "^4.0.11"
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
   }
 }

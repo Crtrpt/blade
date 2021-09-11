@@ -2,7 +2,14 @@ import Master from "../layout/Master.vue"
 var route = [
   {
     path: "/",
-    component: ()=>import("../pages/Home.vue"),
+    component: ()=>import("../layout/Main.vue"),
+    children:[
+      {
+        name:"home",
+        path: "/home",
+        component: ()=>import("../pages/Home.vue"),
+      }
+    ]
   },
   {
     name:"login",
@@ -14,5 +21,6 @@ var route = [
     path: "/sign",
     component: ()=>import("../pages/auth/Sign.vue"),
   },
+ 
 ];
 export default route;
