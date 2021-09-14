@@ -1,7 +1,11 @@
 <template>
 
-    <div class=" para_bottom_bar flex justify-start items-center">
-         
+    <div class="flex">
+           <div class="flex-grow text-sm"> 
+                选择了6个
+            </div>
+           <div class="para_bottom_bar flex justify-start items-center"> 
+
             <RefreshIcon  class="ops h-4 hover:bg-gray-200 cursor-pointer" />
 
             <ChevronDoubleLeftIcon  class=" ops h-4 hover:bg-gray-200 cursor-pointer" />
@@ -17,6 +21,7 @@
             <input class="ops per h-4 w-10 form-input  text-xs border-2 p-2" value="50">
 
             <input class="ops total h-4 w-10 form-input  text-xs border-2 p-2" value="999" readonly>
+           </div>
 
     </div>
 
