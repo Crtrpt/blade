@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col w-full" style="height: 100%">
     <MysqlCommandLine v-model="sql" />
-    <MysqlToolBar class="border-b-2" />
+    <MysqlToolTopBar class="border-b-2" />
     <div class="data flex-grow overflow-auto">
       <table >
         <thead class="header">
@@ -25,7 +25,7 @@
                 }"
               >
                 <div class="col_name text-sm">{{ r.name }}</div>
-                <ChevronDownIcon class="h-2" />
+                <ChevronDownIcon class="h-4" />
               </div>
             </th>
           </tr>
@@ -64,12 +64,29 @@ import {
   ChevronDoubleRightIcon,
   RefreshIcon,
   ArrowRightIcon,
+  ChevronDownIcon,
+  UploadIcon
+  
 } from "@heroicons/vue/solid";
 import MysqlCommandLine from "./MysqlCommandLine.vue";
-import MysqlToolBar from "./MysqlToolBar.vue";
+import MysqlToolBar from "./MysqlBottomToolBar.vue";
+import MysqlToolTopBar from "./MysqlTopToolBar.vue"
 import { mapGetters } from "vuex";
 
 export default defineComponent({
+      components: {
+    ChevronLeftIcon,
+    UploadIcon,
+    MysqlCommandLine,
+    MysqlToolBar,
+    MysqlToolTopBar,
+    ArrowRightIcon,
+    RefreshIcon,
+    ChevronRightIcon,
+    ChevronDoubleLeftIcon,
+    ChevronDoubleRightIcon,
+    ChevronDownIcon
+  },
   methods: {
     selectAll(s) {
       this.data.forEach((e) => {
@@ -130,16 +147,7 @@ export default defineComponent({
       ],
     };
   },
-  components: {
-    ChevronLeftIcon,
-    MysqlCommandLine,
-    MysqlToolBar,
-    ArrowRightIcon,
-    RefreshIcon,
-    ChevronRightIcon,
-    ChevronDoubleLeftIcon,
-    ChevronDoubleRightIcon,
-  },
+
 });
 </script>
 
@@ -164,11 +172,15 @@ export default defineComponent({
       background-color: rgba(229, 231, 235, var(--tw-border-opacity));
       border-top: white 1px solid;
       border-bottom: white 1px solid;
+        border-left: white 1px solid;
+      border-right: white 1px solid;
     }
     &.col_select {
       background-color: rgba(229, 231, 235, var(--tw-border-opacity));
       border-left: white 1px solid;
       border-right: white 1px solid;
+       border-top: white 1px solid;
+      border-bottom: white 1px solid;
     }
     :first-child {
       border: 1px solid rgba(229, 231, 235, var(--tw-border-opacity));

@@ -1,7 +1,7 @@
 <template>
 
     <div class="flex">
-           <div class="flex-grow text-sm"> 
+           <div class="flex-grow text-sm flex items-center pl-2"> 
                 选择了6个
             </div>
            <div class="para_bottom_bar flex justify-start items-center"> 
