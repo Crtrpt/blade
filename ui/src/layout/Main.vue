@@ -1,10 +1,10 @@
 <template>
-    <div class="flex  h-full">
-      <Left class=" w-1/6  border-r border-grey-500 "></Left>
-      <div class="main flex-grow  flex flex-col">
-        <Header class="h-10 border-b border-grey-500"></Header>
-        <router-view class="flex-grow"></router-view>
-        <Footer class="h-10 border-t border-grey-500"></Footer>
+    <div class="flex  h-full w-full">
+      <Left class="border-r border-grey-500  leftbar flex-shrink-0 w-1/6"></Left>
+      <div class="main flex-grow  flex flex-col  flex-shrink-0 w-5/6">
+        <Header class="h-10 border-b border-grey-500 flex-shrink-0"></Header>
+        <router-view class="flex-grow  "></router-view>
+        <Footer class="h-10 border-t border-grey-500 flex-shrink-0"></Footer>
       </div>
     </div>
 </template>
@@ -23,4 +23,7 @@ import Footer from "./Footer.vue"
   }
 </script>
 <style>
+.leftbar {
+
+}
 </style>

@@ -22,6 +22,7 @@ const env = process.env.NODE_ENV
 console.log("env:"+process.env.NODE_ENV)
 
 export default {
+  preserveEntrySignatures: false,
   input: 'src/main.ts',
   output: {
     sourcemap: true,

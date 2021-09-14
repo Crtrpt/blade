@@ -8,6 +8,16 @@ var route = [
         name:"home",
         path: "/home",
         component: ()=>import("../pages/Home.vue"),
+      },
+      {
+        name:"instance",
+        path: "/instance/:id",
+        component: ()=>import("../pages/Instance.vue"),
+      },
+      {
+        name:"property",
+        path: "/property/:id",
+        component: ()=>import("../pages/Property.vue"),
       }
     ]
   },

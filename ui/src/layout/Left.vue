@@ -1,17 +1,22 @@
 <template>
-    <div>
+    <div class="flex flex-col">
         <StartMenu  class="border-b border-grey-500 h-10"/>
-        <ConnectList />
+        <div class="flex-grow overflow-y-auto">
+           <ConnectList  />
+        </div>
+        <GlobleSetting class="border-t border-grey-500 h-10 flex-shrink-0" />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import StartMenu from "./StartMenu.vue"
-import ConnectList from "./ConnectList.vue"
+import StartMenu from "../components/StartMenu.vue"
+import ConnectList from "../components/ConnectList.vue"
+import GlobleSetting from "../components/GlobleSetting.vue"
+
  export default {
     components:{
-        StartMenu,ConnectList
+        StartMenu,ConnectList,GlobleSetting
     },
     name:"Main",
     setup() {

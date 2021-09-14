@@ -1,5 +1,5 @@
 import './index.scss'
-import {createApp,h} from 'vue';
+import {createApp,h,defineAsyncComponent } from 'vue';
 import {createRouter,createWebHashHistory} from "vue-router";
 import route from "./route/index.js";
 import store from "./store/index.js";
@@ -22,3 +22,29 @@ const app = createApp(App)
 app.use(router)
 app.use(store)
 app.mount('#app')
+
+app.component("mysql",defineAsyncComponent(() =>
+    import('./adapter/mysql/Mysql.vue')
+))
+app.component("mysqlproperty",defineAsyncComponent(() =>
+    import('./adapter/mysql/MysqlProperty.vue')
+))
+
+app.component("mqtt",defineAsyncComponent(() =>
+    import('./adapter/mqtt/Mqtt.vue')
+))
+app.component("mqttproperty",defineAsyncComponent(() =>
+    import('./adapter/mqtt/MqttProperty.vue')
+))
+
+app.component("redis",defineAsyncComponent(() =>
+    import('./adapter/redis/Redis.vue')
+))
+app.component("redisproperty",defineAsyncComponent(() =>
+    import('./adapter/redis/RedisProperty.vue')
+))
+
+
+app.component("home",defineAsyncComponent(() =>
+    import('./adapter/home/Home.vue')
+))

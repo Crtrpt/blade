@@ -1,15 +1,12 @@
 import { createStore } from 'vuex'
+import ConnectList from "./modules/connectList"
+import App from "./modules/app"
 
 const store = createStore({
-    state () {
-      return {
-        version: "v0.0.1"
-      }
+    modules:{
+      connectlist:ConnectList,
+      app:App
     },
-    getters: {
-        version(state){
-            return state.version;
-        }
-    }
+   
   })
 export default store
