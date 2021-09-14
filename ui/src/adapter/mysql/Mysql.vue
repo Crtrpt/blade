@@ -201,9 +201,7 @@ export default defineComponent({
     }
   }
 }
-.sql {
-  height: 150px;
-}
+
 .header_col {
   .tab-col {
     .col_field {
