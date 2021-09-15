@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-start items-center pl-2">
-      <router-link to="home">home</router-link>
+    <router-link to="home">home</router-link>
   </div>
 </template>
 

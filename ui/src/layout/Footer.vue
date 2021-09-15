@@ -1,5 +1,7 @@
 <template>
-  <div class="flex pl-2 justify-start items-center flex-row-reverse">version:{{ this["app/version"] }}</div>
+  <div class="flex pl-2 justify-start items-center flex-row-reverse">
+    version:{{ this["app/version"] }}
+  </div>
 </template>
 
 <script lang="ts">

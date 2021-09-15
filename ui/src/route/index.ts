@@ -1,36 +1,35 @@
-import Master from "../layout/Master.vue"
+import Master from "../layout/Master.vue";
 var route = [
   {
     path: "/",
-    component: ()=>import("../layout/Main.vue"),
-    children:[
+    component: () => import("../layout/Main.vue"),
+    children: [
       {
-        name:"home",
+        name: "home",
         path: "/home",
-        component: ()=>import("../pages/Home.vue"),
+        component: () => import("../pages/Home.vue"),
       },
       {
-        name:"instance",
+        name: "instance",
         path: "/instance/:id",
-        component: ()=>import("../pages/Instance.vue"),
+        component: () => import("../pages/Instance.vue"),
       },
       {
-        name:"property",
+        name: "property",
         path: "/property/:id",
-        component: ()=>import("../pages/Property.vue"),
-      }
-    ]
+        component: () => import("../pages/Property.vue"),
+      },
+    ],
   },
   {
-    name:"login",
+    name: "login",
     path: "/login",
-    component: ()=>import("../pages/auth/Auth.vue"),
+    component: () => import("../pages/auth/Auth.vue"),
   },
   {
-    name:"sign",
+    name: "sign",
     path: "/sign",
-    component: ()=>import("../pages/auth/Sign.vue"),
+    component: () => import("../pages/auth/Sign.vue"),
   },
- 
 ];
 export default route;

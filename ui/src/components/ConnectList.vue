@@ -16,44 +16,7 @@
         <DotsVerticalIcon class="h-4 cursor-pointer text-gray-500" />
       </div>
       <template v-if="i.open">
-        <router-link
-          :to="{
-            name: 'instance',
-            params: {
-              id: c.id,
-            },
-          }"
-          class="
-            pl-5
-            pt-1
-            pb-1
-            pr-2
-            border-l border-grey-500
-            ml-5
-            hover:bg-gray-100 hover:text-white
-            cursor-pointer
-            flex
-          "
-          v-for="c in i.children"
-          :key="c.id"
-        >
-          <div class="flex-grow text-sm text-green-600" v-if="c.status == 0">
-            {{ c.name }}
-          </div>
-          <div class="flex-grow text-sm text-red-600" v-if="c.status == 1">
-            {{ c.name }}
-          </div>
-          <router-link
-            :to="{
-              name: 'property',
-              params: {
-                id: c.id,
-              },
-            }"
-          >
-            <DotsVerticalIcon class="h-4 cursor-pointer text-gray-500" />
-          </router-link>
-        </router-link>
+        <ConnectItem :i="i" />
       </template>
     </div>
   </div>
@@ -68,12 +31,14 @@ import {
 } from "@heroicons/vue/solid";
 
 import { mapGetters, mapActions } from "vuex";
+import ConnectItem from "./ConnectItem.vue";
 
 export default defineComponent({
   components: {
     ChevronDownIcon,
     ChevronRightIcon,
     DotsVerticalIcon,
+    ConnectItem,
   },
   methods: {
     ...mapActions(["connectlist/setCurrentCtx"]),

@@ -1,41 +1,39 @@
 <template>
   <div>
-
-    <component v-bind:is="adapter.property" v-model="current" ></component>
+    <component v-bind:is="adapter.property" v-model="current"></component>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
-import {mapActions,mapGetters }  from "vuex";
+import { defineComponent } from "vue";
+import { mapActions, mapGetters } from "vuex";
 export default defineComponent({
   setup() {
-    console.log(this)
+    console.log(this);
   },
   computed: {
     ...mapGetters({
-          'adapter':'connectlist/getAdapter',
-          'current':"connectlist/currentCtx"
-    })
+      adapter: "connectlist/getAdapter",
+      current: "connectlist/currentCtx",
+    }),
   },
-  methods:{
+  methods: {
     ...mapActions(["connectlist/setCurrentCtx"]),
   },
-  data(){
-    return {
-    }
+  data() {
+    return {};
   },
-  watch:{
-    "$route":{
-        deep:true,
-        handler(n,o){
-          console.log("更新路由")
-          this['connectlist/setCurrentCtx'](n.params.id);
-        }
-    }
+  watch: {
+    $route: {
+      deep: true,
+      handler(n, o) {
+        console.log("更新路由");
+        this["connectlist/setCurrentCtx"](n.params.id);
+      },
+    },
   },
-  created(){
+  created() {
     console.log("初始化");
-    this['connectlist/setCurrentCtx'](this.$route.params.id);
-  }
-})
+    this["connectlist/setCurrentCtx"](this.$route.params.id);
+  },
+});
 </script>

@@ -14,6 +14,7 @@ var ConnectList = {
             name: "mqtt",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 2,
@@ -21,6 +22,7 @@ var ConnectList = {
             name: "mysql",
             group: 1,
             status: 1,
+            active: false,
           },
           {
             id: 3,
@@ -28,6 +30,7 @@ var ConnectList = {
             name: "redis",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 4,
@@ -35,6 +38,7 @@ var ConnectList = {
             name: "redis",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 5,
@@ -42,6 +46,7 @@ var ConnectList = {
             name: "redis",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 6,
@@ -49,6 +54,7 @@ var ConnectList = {
             name: "redis",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 7,
@@ -56,6 +62,7 @@ var ConnectList = {
             name: "redis",
             group: 1,
             status: 0,
+            active: false,
           },
         ],
       },
@@ -70,6 +77,7 @@ var ConnectList = {
             name: "mqtt",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 9,
@@ -77,6 +85,7 @@ var ConnectList = {
             name: "mysql",
             group: 1,
             status: 0,
+            active: false,
           },
           {
             id: 10,
@@ -84,6 +93,7 @@ var ConnectList = {
             name: "redis",
             group: 1,
             status: 0,
+            active: false,
           },
         ],
       },
@@ -91,19 +101,23 @@ var ConnectList = {
     adapter: [
       {
         name: "home",
-        property:"HomeProperty"
+        property:"HomeProperty",
+        menuSlot:"homemenu",
       },
       {
         name: "mqtt",
-        property:"mqttproperty"
+        property:"mqttproperty",
+        menuSlot:"mqttmenu",
       },
       {
         name: "mysql",
-        property:"mysqlproperty"
+        property:"mysqlproperty",
+        menuSlot:"mysqlmenu",
       },
       {
         name: "Redis",
-        property:"redisproperty"
+        property:"redisproperty",
+        menuSlot:"redismenu",
       },
     ],
   }),
@@ -111,11 +125,14 @@ var ConnectList = {
     setCurrentCtx(state, ctx) {
       var f = false;
       if (state.current != null && state.current.id == ctx.id) {
+        console.log("更新")
+        state.current.active=!state.current.active
         return;
       }
       for (const g of state.group) {
         for (const c of g.children) {
           if (c.id == ctx) {
+            c.active=!c.active;
             state.current = c;
             f = true;
             break;
@@ -140,6 +157,9 @@ var ConnectList = {
     },
     currentCtx(state) {
       return state.current;
+    },
+    getAdapters(state){
+      return state.adapter;
     },
     getAdapter(state) {
       return state.adapter[state.current?.type || 0];

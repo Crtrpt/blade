@@ -3,7 +3,7 @@
     <MysqlCommandLine v-model="sql" />
     <MysqlToolTopBar class="border-b-2" />
     <div class="data flex-grow overflow-auto">
-      <table >
+      <table>
         <thead class="header">
           <tr class="header_col border-b-2">
             <th
@@ -65,16 +65,15 @@ import {
   RefreshIcon,
   ArrowRightIcon,
   ChevronDownIcon,
-  UploadIcon
-  
+  UploadIcon,
 } from "@heroicons/vue/solid";
 import MysqlCommandLine from "./MysqlCommandLine.vue";
 import MysqlToolBar from "./MysqlBottomToolBar.vue";
-import MysqlToolTopBar from "./MysqlTopToolBar.vue"
+import MysqlToolTopBar from "./MysqlTopToolBar.vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
-      components: {
+  components: {
     ChevronLeftIcon,
     UploadIcon,
     MysqlCommandLine,
@@ -85,7 +84,7 @@ export default defineComponent({
     ChevronRightIcon,
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
-    ChevronDownIcon
+    ChevronDownIcon,
   },
   methods: {
     selectAll(s) {
@@ -122,32 +121,31 @@ export default defineComponent({
         {
           __selected: false,
           id: 1,
-          name:"test1",
+          name: "test1",
         },
         {
           __selected: false,
           id: 2,
-          name:"test2"
+          name: "test2",
         },
-                {
+        {
           __selected: false,
           id: 3,
-          name:"test3"
+          name: "test3",
         },
         {
           __selected: false,
           id: 4,
-          name:"test4"
+          name: "test4",
         },
         {
           __selected: false,
           id: 5,
-          name:"test5"
+          name: "test5",
         },
       ],
     };
   },
-
 });
 </script>
 
@@ -168,18 +166,18 @@ export default defineComponent({
     }
   }
   .record {
-    &.row_select  {
+    &.row_select {
       background-color: rgba(229, 231, 235, var(--tw-border-opacity));
       border-top: white 1px solid;
       border-bottom: white 1px solid;
-        border-left: white 1px solid;
+      border-left: white 1px solid;
       border-right: white 1px solid;
     }
     &.col_select {
       background-color: rgba(229, 231, 235, var(--tw-border-opacity));
       border-left: white 1px solid;
       border-right: white 1px solid;
-       border-top: white 1px solid;
+      border-top: white 1px solid;
       border-bottom: white 1px solid;
     }
     :first-child {

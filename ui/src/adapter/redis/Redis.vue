@@ -1,5 +1,3 @@
 <template>
-    <div>
-        redis
-    </div>
+  <div>redis</div>
 </template>
