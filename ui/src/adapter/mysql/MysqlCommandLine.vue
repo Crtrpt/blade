@@ -14,19 +14,11 @@ import { defineComponent, defineAsyncComponent } from "vue";
 import { mapActions, mapState, mapGetters } from "vuex";
 import { ChevronRightIcon } from "@heroicons/vue/solid";
 
-import { EditorState, EditorView, basicSetup ,} from "@codemirror/basic-setup";
-import { keymap,KeyBinding, Command} from "@codemirror/view"
+import { EditorState, EditorView, basicSetup } from "@codemirror/basic-setup";
+import { keymap, KeyBinding, Command } from "@codemirror/view";
 import { sql } from "@codemirror/lang-sql";
-import {defaultKeymap,indentWithTab} from "@codemirror/commands"
+import { defaultKeymap, indentWithTab } from "@codemirror/commands";
 import { oneDark } from "@codemirror/theme-one-dark";
-var x={key:"Alt-ArrowUp"} as KeyBinding;
-
-declare let a: KeyBinding;
-
-a.run=((t:EditorView):boolean=>{
-  console.log("执行");
-  return true
-}) as Command
 
 export default defineComponent({
   components: {
@@ -38,17 +30,30 @@ export default defineComponent({
   props: {
     modelValue: Object,
   },
-  data(){
-    var editor1:EditorView|undefined;
+  data() {
+    var editor1: EditorView | undefined;
     return {
-      editor:editor1
-    }
+      editor: editor1,
+    };
   },
   mounted() {
     this.editor = new EditorView({
       state: EditorState.create({
         doc: "select * from test",
-        extensions: [basicSetup, sql(),oneDark,keymap.of([a])],
+        extensions: [
+          basicSetup,
+          sql(),
+          oneDark,
+          keymap.of([
+            {
+              key: "Ctrl-Enter",
+              run: ((t: EditorView): boolean => {
+                console.log("执行sql");
+                return true;
+              }) as Command,
+            } as KeyBinding,
+          ]),
+        ],
       }),
       parent: this.$refs.sql as Element,
     });
