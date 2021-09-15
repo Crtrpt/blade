@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-start items-center pl-2">
-    <router-link to="home">home</router-link>
+    <router-link to="home">{{ ctx?.name || "" }}</router-link>
   </div>
 </template>
 
@@ -8,11 +8,14 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["version"]),
+    ...mapGetters({
+      ctx: "connectlist/currentCtx",
+    }),
   },
+
   name: "Header",
   setup() {
-    console.log("Main 初始化");
+    console.log("Main初始化");
   },
 };
 </script>

@@ -1,11 +1,7 @@
 <template>
   <div class="">
-    <div
-      class="h-15 flex flex-col border-b border-grey-500"
-      v-for="i in list"
-      :key="i.id"
-    >
-      <div class="pl-2 p-2 flex border-b border-grey-500">
+    <div class="h-15 flex flex-col" v-for="i in list" :key="i.id">
+      <div class="pl-2 p-2 flex">
         <div @click="toggle(i)">
           <ChevronDownIcon class="h-5 cursor-pointer" v-if="i.open" />
           <ChevronRightIcon class="h-5" v-if="!i.open" />
@@ -13,7 +9,7 @@
         <div class="flex-grow pl-2 text-base cursor-pointer" @click="toggle(i)">
           {{ i.name }}
         </div>
-        <DotsVerticalIcon class="h-4 cursor-pointer text-gray-500" />
+        <!-- <DotsVerticalIcon class="h-4 cursor-pointer text-gray-500" /> -->
       </div>
       <template v-if="i.open">
         <ConnectItem :i="i" />
