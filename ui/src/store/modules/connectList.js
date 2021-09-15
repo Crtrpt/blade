@@ -5,8 +5,8 @@ var ConnectList = {
     group: [
       {
         id: 1,
-        name: "分组1",
-        open: true,
+        name: "dev",
+        open: false,
         children: [
           {
             id: 1,
@@ -68,7 +68,7 @@ var ConnectList = {
       },
       {
         id: 2,
-        name: "分组2",
+        name: "prod",
         open: false,
         children: [
           {
@@ -98,6 +98,8 @@ var ConnectList = {
         ],
       },
     ],
+    activeConnectMap: new Map(),
+    activeConnectList: [],
     adapter: [
       {
         name: "home",
@@ -122,6 +124,17 @@ var ConnectList = {
     ],
   }),
   mutations: {
+    closeActive(state, ctx) {
+      console.log("清除"+ctx.id)
+      state.activeConnectMap.delete(ctx.id);
+      for (var item of state.activeConnectList) {
+        if (item.id == ctx.id) {
+          console.log("TODO 清除")
+          item.activeBarDelete = false;
+          break
+        }
+      }
+    },
     setCurrentCtx(state, ctx) {
       var f = false;
       if (state.current != null && state.current.id == ctx.id) {
@@ -132,8 +145,17 @@ var ConnectList = {
       for (const g of state.group) {
         for (const c of g.children) {
           if (c.id == ctx) {
-            c.active=!c.active;
+            c.active = !c.active;
             state.current = c;
+            //如果有什么都不做
+            if (state.activeConnectMap.has(c.id)) {
+
+            //如果没有就添加
+            } else {
+              state.activeConnectMap.set(c.id, c);
+              c.activeBarDelete = true;
+              state.activeConnectList.push(c);
+            }
             f = true;
             break;
           }
@@ -145,12 +167,18 @@ var ConnectList = {
     },
   },
   actions: {
+    closeActive(context, ctx) {
+      context.commit("closeActive", ctx);
+    },
     setCurrentCtx(context, ctx) {
       console.log("设置当前链接id" + ctx);
       context.commit("setCurrentCtx", ctx);
     },
   },
   getters: {
+    activeConnectList(state) {
+      return state.activeConnectList;
+    },
     connectList(state) {
       console.log("获取列表");
       return state.group;

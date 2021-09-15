@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import Left from "./Left.vue";
-import Header from "./header.vue";
+import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 export default {
   components: {
@@ -24,7 +24,4 @@ export default {
   },
 };
 </script>
-<style>
-.leftbar {
-}
-</style>
+<style></style>

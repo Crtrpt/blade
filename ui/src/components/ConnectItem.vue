@@ -1,16 +1,5 @@
 <template>
-  <router-link
-    :to="{
-      name: 'instance',
-      params: {
-        id: c.id,
-      },
-    }"
-    class="flex flex-col"
-    v-for="c in i.children"
-    :key="c.id"
-    @click="updateCtx(c)"
-  >
+  <div class="flex flex-col" v-for="c in i.children" :key="c.id">
     <div
       class="
         flex
@@ -21,7 +10,11 @@
         cursor-pointer
       "
     >
-      <div class="flex-grow text-sm text-gray-500 hover:text-gray-800">
+      <div
+        class="flex-grow text-sm text-gray-500 hover:text-gray-800"
+        @click="updateCtx(c)"
+        @contextmenu="contextMenu(c, $event)"
+      >
         {{ c.name }}
       </div>
 
@@ -33,15 +26,14 @@
           },
         }"
       >
-        <DotsVerticalIcon class="h-4 cursor-pointer text-gray-500" />
       </router-link>
     </div>
     <component
-      v-if="c.active"
+      v-if="c.open"
       v-bind:is="adapters[c.type].menuSlot"
       v-model="current"
     ></component>
-  </router-link>
+  </div>
 </template>
 
 <script lang="ts">
@@ -59,8 +51,26 @@ export default defineComponent({
     }),
   },
   methods: {
-    updateCtx(c) {
-      c.active = !c.active;
+    ...mapActions({
+      collectMenu: "app/collectMenu",
+    }),
+    contextMenu(c, e: Event) {
+      e.preventDefault();
+      console.log("右键点击");
+      this.collectMenu([
+        {
+          name: "item菜单",
+        },
+      ]);
+    },
+    updateCtx(c: any) {
+      c.open = !c.open;
+      this.$router.push({
+        name: "instance",
+        params: {
+          id: c.id,
+        },
+      });
     },
   },
 });

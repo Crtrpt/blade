@@ -23,7 +23,7 @@
               focus-visible:ring-opacity-75
             "
           >
-            <span class="text-indigo-600 hover:text-indigo-500">开始</span>
+            <span class="text-blue-600 hover:text-blue-500">开始</span>
             <ChevronDownIcon
               :class="open ? '' : 'text-opacity-70'"
               class="

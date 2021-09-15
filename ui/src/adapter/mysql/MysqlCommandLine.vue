@@ -28,7 +28,7 @@ export default defineComponent({
     console.log("mysql初始化");
   },
   props: {
-    modelValue: Object,
+    modelValue: String,
   },
   data() {
     var editor1: EditorView | undefined;

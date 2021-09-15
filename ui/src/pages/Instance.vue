@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <keep-alive>
     <component v-bind:is="adapter.name" v-model="current"></component>
-  </div>
+  </keep-alive>
 </template>
 <script lang="ts">
 import { defineComponent, defineAsyncComponent } from "vue";
@@ -26,7 +26,6 @@ export default defineComponent({
     $route: {
       deep: true,
       handler(n, o) {
-        console.log("更新路由");
         this["connectlist/setCurrentCtx"](n.params.id);
       },
     },

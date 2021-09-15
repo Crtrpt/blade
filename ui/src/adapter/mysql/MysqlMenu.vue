@@ -13,25 +13,30 @@
         pb-2
         pl-5
         border-l border-dashed border-grey-500
+        cursor-pointer
         hover:text-gray-600
       "
+      v-for="db in databases"
+      :key="db"
     >
-      test
-    </div>
-    <div
-      class="
-        pb-2
-        pl-5
-        border-l border-dashed border-grey-500
-        hover:text-gray-600
-      "
-    >
-      mysql
-    </div>
-    <div
-      class="pl-5 border-l border-dashed border-grey-500 hover:text-gray-600"
-    >
-      test2
+      {{ db.name }}
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { mapActions, mapState, mapGetters } from "vuex";
+
+export default defineComponent({
+  data() {
+    return {
+      databases: [
+        {
+          name: "test",
+        },
+      ],
+    };
+  },
+});
+</script>
