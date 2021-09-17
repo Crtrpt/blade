@@ -104,22 +104,25 @@ var ConnectList = {
       {
         name: "home",
         property:"HomeProperty",
-        menuSlot:"homemenu",
+        menuSlot:"homemenuItem",
       },
       {
         name: "mqtt",
         property:"mqttproperty",
         menuSlot:"mqttmenu",
+        menuItem:"mqttmenuItem",
       },
       {
         name: "mysql",
         property:"mysqlproperty",
-        menuSlot:"mysqlmenu",
+        menuSlot: "mysqlmenu",
+        menuItem:"mysqlmenuItem",
       },
       {
         name: "redis",
         property:"redisproperty",
-        menuSlot:"redismenu",
+        menuSlot: "redismenu",
+        menuItem:"redismenuItem",
       },
     ],
   }),

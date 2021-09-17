@@ -31,6 +31,10 @@ app.component(
   defineAsyncComponent(() => import("./adapter/mysql/MysqlProperty.vue"))
 );
 app.component(
+  "mysqlmenuItem",
+  defineAsyncComponent(() => import("./adapter/mysql/MysqlMenuItem.vue"))
+);
+app.component(
   "mysqlmenu",
   defineAsyncComponent(() => import("./adapter/mysql/MysqlMenu.vue"))
 );
@@ -44,6 +48,10 @@ app.component(
   defineAsyncComponent(() => import("./adapter/mqtt/MqttProperty.vue"))
 );
 app.component(
+  "mqttmenuItem",
+  defineAsyncComponent(() => import("./adapter/mqtt/MqttMenuItem.vue"))
+);
+app.component(
   "mqttmenu",
   defineAsyncComponent(() => import("./adapter/mqtt/MqttMenu.vue"))
 );
@@ -55,6 +63,10 @@ app.component(
 app.component(
   "redisproperty",
   defineAsyncComponent(() => import("./adapter/redis/RedisProperty.vue"))
+);
+app.component(
+  "redismenuItem",
+  defineAsyncComponent(() => import("./adapter/redis/RedisMenuItem.vue"))
 );
 app.component(
   "redismenu",

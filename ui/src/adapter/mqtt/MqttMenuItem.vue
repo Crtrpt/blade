@@ -1,14 +1,38 @@
 <template>
-  <div
-    class="flex flex-col"
-    v-for="c in i.children"
-    :key="c.id"
-    @contextmenu="contextMenu(c, $event)"
-  >
+  <div @contextmenu="contextMenu(c, $event)">
+    <div
+      class="
+        flex
+        p-2
+        pl-5
+        border-l border-dashed border-grey-500
+        ml-5
+        cursor-pointer
+        hover:border-black
+      "
+    >
+      <div
+        class="flex-grow text-sm text-gray-500 hover:text-gray-800"
+        @dblclick="updateCtx(c)"
+      >
+        {{ c.name }}
+      </div>
+
+      <router-link
+        :to="{
+          name: 'property',
+          params: {
+            id: c.id,
+          },
+        }"
+      >
+      </router-link>
+      <!-- {{ adapters[c.type].menuSlot }} -->
+    </div>
     <component
-      v-bind:is="adapters[c.type].menuItem"
+      v-if="c.open"
+      v-bind:is="adapters[c.type].menuSlot"
       v-model="current"
-      :c="c"
     ></component>
   </div>
 </template>
@@ -19,7 +43,7 @@ import { mapActions, mapState, mapGetters } from "vuex";
 
 export default defineComponent({
   props: {
-    i: Object,
+    c: Object,
   },
   computed: {
     ...mapGetters({
@@ -36,7 +60,7 @@ export default defineComponent({
       console.log("右键点击");
       this.collectMenu([
         {
-          name: "连接属性",
+          name: "客户端属性",
           ctx: c,
           run: (c) => {
             this.$router.push({
