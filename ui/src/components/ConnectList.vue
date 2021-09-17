@@ -57,18 +57,40 @@ export default defineComponent({
       g.open = !g.open;
     },
     contextLeftBarMenu(e: Event) {
-      this.collectMenu([
-        {
-          name: "menu 菜单",
-        },
-      ]);
+      // this.collectMenu([
+      //   {
+      //     name: "menu 菜单",
+      //   },
+      // ]);
       this.displayContextMenu(e);
       e.preventDefault();
     },
     contextMenu(c, e: Event) {
       this.collectMenu([
         {
-          name: "list菜单",
+          name: "创建链接",
+          ctx: c,
+          run: (c) => {
+            console.log(c);
+            alert("创建链接");
+          },
+        },
+        {
+          name: "分组",
+          children: [
+            {
+              name: "创建分组",
+            },
+            {
+              name: "删除分组",
+            },
+            {
+              name: "重命名",
+            },
+            {
+              name: "克隆",
+            },
+          ],
         },
       ]);
       e.preventDefault();

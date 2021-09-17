@@ -10,14 +10,15 @@
   >
     <div
       class="
-        pb-2
+        p-1
         pl-5
         border-l border-dashed border-grey-500
         cursor-pointer
-        hover:text-gray-600
+        hover:text-gray-600 hover:border-black
       "
       v-for="db in databases"
       :key="db"
+      @contextmenu="contextMenu(db, $event)"
     >
       {{ db.name }}
     </div>
@@ -29,14 +30,32 @@ import { defineComponent } from "vue";
 import { mapActions, mapState, mapGetters } from "vuex";
 
 export default defineComponent({
-  data() {
-    return {
-      databases: [
+  computed: {
+    ...mapGetters({
+      databases: "mysql/dbList",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      collectMenu: "app/collectMenu",
+    }),
+    contextMenu(c, e: Event) {
+      e.preventDefault();
+      console.log("右键点击");
+      this.collectMenu([
         {
-          name: "test",
+          name: "数据库",
+          children: [
+            {
+              name: "新建表",
+            },
+          ],
         },
-      ],
-    };
+      ]);
+    },
+  },
+  data() {
+    return {};
   },
 });
 </script>

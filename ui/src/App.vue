@@ -1,35 +1,18 @@
 <template>
   <div class="w-full h-full" @click="click()">
-    <div
-      v-if="display.display"
-      class="
-        app_context_menu
-        absolute
-        shadow-2xl
-        p-2
-        bg-gray-400
-        text-gray-600 text-sm
-      "
-      :style="{
-        left: display.left,
-        top: display.top,
-      }"
-      @contextmenu="stop($event)"
-    >
-      右键菜单
-    </div>
+    <context-menu />
     <router-view></router-view>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, defineAsyncComponent } from "vue";
 import { mapActions, mapState, mapGetters } from "vuex";
+import ContextMenu from "./components/ContextMenu.vue";
 export default defineComponent({
+  components: { ContextMenu },
   name: "App",
   computed: {
-    ...mapGetters({
-      display: "app/displayContextMenu",
-    }),
+    ...mapGetters({}),
   },
   methods: {
     ...mapActions({
@@ -37,10 +20,6 @@ export default defineComponent({
     }),
     click(e) {
       this.closeMenu();
-    },
-    stop(e: Event) {
-      e.stopPropagation();
-      e.preventDefault();
     },
   },
   setup() {},
@@ -53,5 +32,7 @@ export default defineComponent({
   z-index: 99;
   left: 200px;
   top: 200px;
+  background-color: #343434;
+  color: white;
 }
 </style>

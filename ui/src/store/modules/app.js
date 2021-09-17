@@ -18,7 +18,10 @@ var App = {
     },
     displayContextMenu(state) {
       return state.menuDisplay;
-    }
+    },
+    getMenuList(state) {
+      return state.contextMenu;
+    },
   },
   mutations: {
     displayContextMenu(state, ctx) {
@@ -35,8 +38,12 @@ var App = {
     collectMenu(state, ctx) {
       console.log("收集菜单");
       console.log(ctx);
-      state.collectMenu.push(ctx);
+      state.collectMenu = [
+        ...state.collectMenu,
+        ...ctx
+      ]
     },
+
     closeMenu(state) {
       state.menuDisplay.display = false;
     }

@@ -10,28 +10,46 @@
   >
     <div
       class="
-        pb-2
+        p-1
         pl-5
         border-l border-dashed border-grey-500
-        hover:text-gray-600
+        cursor-pointer
+        hover:text-gray-600 hover:border-black
       "
+      v-for="db in database"
+      :key="db"
+      @contextmenu="contextMenu(db, $event)"
     >
-      foo
-    </div>
-    <div
-      class="
-        pb-2
-        pl-5
-        border-l border-dashed border-grey-500
-        hover:text-gray-600
-      "
-    >
-      foo1
-    </div>
-    <div
-      class="pl-5 border-l border-dashed border-grey-500 hover:text-gray-600"
-    >
-      foo2
+      {{ db.name }}
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { mapActions, mapState, mapGetters } from "vuex";
+
+export default defineComponent({
+  computed: {
+    ...mapGetters({
+      database: "redis/dblist",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      collectMenu: "app/collectMenu",
+    }),
+    contextMenu(c, e: Event) {
+      e.preventDefault();
+      this.collectMenu([
+        {
+          name: "删除",
+        },
+      ]);
+    },
+  },
+  data() {
+    return {};
+  },
+});
+</script>

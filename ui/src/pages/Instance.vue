@@ -1,7 +1,9 @@
 <template>
-  <keep-alive>
-    <component v-bind:is="adapter.name" v-model="current"></component>
-  </keep-alive>
+  <div>
+    <keep-alive>
+      <component v-bind:is="adapter.name" v-model="current"></component>
+    </keep-alive>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent, defineAsyncComponent } from "vue";

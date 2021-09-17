@@ -117,7 +117,7 @@ var ConnectList = {
         menuSlot:"mysqlmenu",
       },
       {
-        name: "Redis",
+        name: "redis",
         property:"redisproperty",
         menuSlot:"redismenu",
       },

@@ -1,5 +1,10 @@
 <template>
-  <div class="flex flex-col" v-for="c in i.children" :key="c.id">
+  <div
+    class="flex flex-col"
+    v-for="c in i.children"
+    :key="c.id"
+    @contextmenu="contextMenu(c, $event)"
+  >
     <div
       class="
         flex
@@ -8,12 +13,12 @@
         border-l border-dashed border-grey-500
         ml-5
         cursor-pointer
+        hover:border-black
       "
     >
       <div
         class="flex-grow text-sm text-gray-500 hover:text-gray-800"
-        @click="updateCtx(c)"
-        @contextmenu="contextMenu(c, $event)"
+        @dblclick="updateCtx(c)"
       >
         {{ c.name }}
       </div>
@@ -27,6 +32,7 @@
         }"
       >
       </router-link>
+      <!-- {{ adapters[c.type].menuSlot }} -->
     </div>
     <component
       v-if="c.open"
@@ -59,7 +65,16 @@ export default defineComponent({
       console.log("右键点击");
       this.collectMenu([
         {
-          name: "item菜单",
+          name: "连接属性",
+          ctx: c,
+          run: (c) => {
+            this.$router.push({
+              name: "property",
+              params: {
+                id: c.id,
+              },
+            });
+          },
         },
       ]);
     },
