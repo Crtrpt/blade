@@ -71,6 +71,13 @@ export default defineComponent({
             });
           },
         },
+        {
+          name: "新建订阅",
+          ctx: c,
+          run: (c) => {
+            console.log("创建订阅");
+          },
+        },
       ]);
     },
     updateCtx(c: any) {

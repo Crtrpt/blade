@@ -124,7 +124,6 @@ export default defineComponent({
 </script>
 <style>
 .app_context_menu {
-  height: 300px;
   width: 200px;
   z-index: 99;
   left: 200px;

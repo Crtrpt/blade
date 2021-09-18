@@ -24,11 +24,11 @@
       <div class="flex-grow">
         {{ topic.name }}
       </div>
-      <div>
+      <!-- <div>
         ↑{{ topic.upCount || 0 }}/↓{{ topic.downCount || 0 }} ↑{{
           topic.up || 0
         }}/↓{{ topic.down || 0 }}
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -52,9 +52,8 @@ export default defineComponent({
       this.collectMenu([
         {
           name: "取消订阅",
-        },
-        {
-          name: "新建订阅",
+          ctx: c,
+          run: (c) => {},
         },
         {
           name: "新建发布",

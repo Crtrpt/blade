@@ -25,14 +25,3 @@ export default defineComponent({
   setup() {},
 });
 </script>
-<style>
-.app_context_menu {
-  height: 300px;
-  width: 200px;
-  z-index: 99;
-  left: 200px;
-  top: 200px;
-  background-color: #343434;
-  color: white;
-}
-</style>
