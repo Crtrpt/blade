@@ -1,14 +1,11 @@
 <template>
   <div class="">
-    <div class="p-2 mt-4 border-b border-gray-300 text-lg font-bold">
-      链接信息
-    </div>
     <div
       class="
         px-2
         mt-4
         border-b border-b-0 border-gray-300
-        text-base
+        text-sm
         flex flex-row
       "
     >
@@ -41,7 +38,7 @@
       </div>
     </div>
     <div class="p-2 mt-4 max-w-md">
-      <div class="grid grid-cols-1 gap-6">
+      <div class="grid grid-cols-1 gap-6" v-if="select == 0">
         <label class="block">
           <span class="text-gray-700">名称:</span>
           <input
@@ -194,6 +191,8 @@
             <span class="ml-2">自动重连</span>
           </label>
         </div>
+      </div>
+      <div class="grid grid-cols-1 gap-6" v-if="select == 1">
         <div class="block">
           <div>
             <label class="inline-flex items-center">
@@ -236,61 +235,131 @@
             <input type="file" class="mt-2" />
           </label>
         </div>
-
-        <div class="flex">
-          <div
+      </div>
+      <div class="grid grid-cols-1 gap-6" v-if="select == 2">
+        <label class="block">
+          <span class="text-gray-700">主题:</span>
+          <input
+            type="text"
             class="
-              bg-blue-600
-              p-2
-              px-4
-              text-white text-center
-              cursor-pointer
-              hover:bg-blue-700
+              mt-1
+              block
+              w-full
+              bg-gray-100
+              border-transparent
+              focus:border-gray-500 focus:bg-white focus:ring-0
             "
-          >
-            保存
-          </div>
-          <div
+            v-model="form.will.topic"
+            placeholder=""
+          />
+        </label>
+        <label class="block">
+          <span class="text-gray-700">内容:</span>
+          <textarea
             class="
-              bg-white
-              p-2
-              ml-2
-              border border-gray-400
-              text-gray
-              cursor-pointer
-              hover:bg-blue-700 hover: hover:text-white
+              mt-1
+              block
+              w-full
+              bg-gray-100
+              border-transparent
+              focus:border-gray-500 focus:bg-white focus:ring-0
             "
-          >
-            测试链接
+            v-model="form.will.payload"
+            placeholder=""
+          />
+        </label>
+        <label class="block">
+          <span class="text-gray-700">通讯质量:</span>
+          <div>
+            <label class="inline-flex items-center">
+              <input type="radio" v-model="form.will.qos" />
+              <span class="ml-2">0</span>
+            </label>
+            <label class="ml-2 inline-flex items-center">
+              <input
+                type="radio"
+                name="willQos"
+                v-model="form.will.qos"
+                value="0"
+              />
+              <span class="ml-2">1</span>
+            </label>
+            <label class="ml-2 inline-flex items-center">
+              <input
+                type="radio"
+                name="willQos"
+                v-model="form.will.qos"
+                value="1"
+              />
+              <span class="ml-2">2</span>
+            </label>
           </div>
-          <div
-            class="
-              bg-white
-              p-2
-              ml-2
-              border border-gray-400
-              text-gray
-              cursor-pointer
-              text-center
-              hover:bg-blue-700 hover: hover:text-white
-            "
-          >
-            断开连接
+        </label>
+        <label class="block">
+          <span class="text-gray-700">是否保留:</span>
+          <div>
+            <label class="inline-flex items-center">
+              <input type="checkbox" v-model="form.will.retain" />
+              <span class="ml-2">保留</span>
+            </label>
           </div>
-          <div
-            class="
-              bg-red-600
-              p-2
-              ml-2
-              px-4
-              text-white
-              cursor-pointer
-              hover:bg-red-700
-              text-center
-            "
-          >
-            删除
-          </div>
+        </label>
+      </div>
+    </div>
+    <div class="p-2 mt-4">
+      <div class="flex">
+        <div
+          class="
+            bg-blue-600
+            p-2
+            px-4
+            text-white text-center
+            cursor-pointer
+            hover:bg-blue-700
+          "
+        >
+          保存
+        </div>
+        <div
+          class="
+            bg-white
+            p-2
+            ml-2
+            border border-gray-400
+            text-gray
+            cursor-pointer
+            hover:bg-blue-700 hover: hover:text-white
+          "
+        >
+          测试链接
+        </div>
+        <div
+          class="
+            bg-white
+            p-2
+            ml-2
+            border border-gray-400
+            text-gray
+            cursor-pointer
+            text-center
+            hover:bg-blue-700 hover: hover:text-white
+          "
+        >
+          断开连接
+        </div>
+        <div
+          class="
+            bg-red-600
+            p-2
+            ml-2
+            px-4
+            text-white
+            cursor-pointer
+            hover:bg-red-700
+            text-center
+          "
+        >
+          删除
         </div>
       </div>
     </div>
@@ -327,6 +396,9 @@ export default defineComponent({
         sslCaFile: "",
         sslClientFile: "",
         sslClientKey: "",
+        will: {
+          qos: 0,
+        },
       },
     };
   },
