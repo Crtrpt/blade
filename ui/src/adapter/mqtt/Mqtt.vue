@@ -1,9 +1,13 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="p-2 flex-grow">topic 接收列表</div>
-    <div class="h-1/3 border border-gray-300 flex">
-      <mqtt-payload-editor v-model="payload"></mqtt-payload-editor>
+    <div class="p-2 border-b border-gray-200">
+      <ChevronRightIcon class="w-5 h-5" />
     </div>
+    <MqttContentList
+      class="py-2 flex-grow xbar"
+      :content="list"
+    ></MqttContentList>
+    <mqtt-payload-editor v-model="payload"></mqtt-payload-editor>
   </div>
 </template>
 
@@ -11,8 +15,20 @@
 import { defineComponent, defineAsyncComponent } from "vue";
 import { mapActions, mapState, mapGetters } from "vuex";
 import MqttPayloadEditor from "./MqttPayloadEditor.vue";
+import MqttContentList from "./MqttContentList.vue";
+import { ChevronRightIcon } from "@heroicons/vue/solid";
+import {
+  ChevronDownIcon,
+  DotsVerticalIcon,
+  SearchIcon,
+} from "@heroicons/vue/solid";
 export default defineComponent({
-  components: { MqttPayloadEditor },
+  components: { MqttPayloadEditor, MqttContentList, ChevronRightIcon },
+  computed: {
+    ...mapGetters({
+      list: "mqtt/content",
+    }),
+  },
   setup() {
     console.log("mqtt初始化");
   },

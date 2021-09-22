@@ -41,6 +41,37 @@ var Mqtt = {
         {
           name:"/test10"
         }
+      ],
+      content: [
+        {
+          qos:0,
+          time: "11001",
+          content: "{name:20}",
+          topic:"/test1"
+        },
+        {
+          qos:1,
+          time: "11001",
+          content: "2999",
+          topic:"/test1"
+        },
+        {
+          qos:1,
+          time: "11001",
+          content: "2999",
+          topic:"/test1"
+        }
+        , {
+          qos:1,
+          time: "11001",
+          content: "2999",
+          topic:"/test1"
+        }, {
+          qos:1,
+          time: "11001",
+          content: "2999",
+          topic:"/test1"
+        }
       ]
     }
   },
@@ -48,6 +79,9 @@ var Mqtt = {
     topicList(state) {
       return state.topicList;
     },
+    content(state) {
+      return state.content;
+    }
   },
 }
 

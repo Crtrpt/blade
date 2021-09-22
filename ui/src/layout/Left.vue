@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <StartMenu class="border-b border-grey-500 h-10" />
-    <div class="flex-grow overflow-y-auto leftbar shadow">
+    <div class="flex-grow overflow-y-auto xbar shadow">
       <ConnectList />
     </div>
     <GlobleSetting class="border-t border-grey-500 h-10 flex-shrink-0" />
