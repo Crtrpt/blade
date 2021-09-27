@@ -52,6 +52,7 @@ export default defineComponent({
       current: "connectlist/setCurrentCtx",
       displayContextMenu: "app/displayContextMenu",
       collectMenu: "app/collectMenu",
+      displayDialog: "app/displayDialog",
     }),
     toggle(g) {
       g.open = !g.open;
@@ -80,15 +81,40 @@ export default defineComponent({
           children: [
             {
               name: "创建分组",
+              ctx: c,
+              run: (c) => {
+                console.log("创建分组");
+                this.displayDialog({
+                  title: "创建分组",
+                });
+              },
             },
             {
               name: "删除分组",
+              ctx: c,
+              run: (c) => {
+                this.displayDialog({
+                  title: "删除分组",
+                });
+              },
             },
             {
               name: "重命名",
+              ctx: c,
+              run: (c) => {
+                this.displayDialog({
+                  title: "重命名",
+                });
+              },
             },
             {
               name: "克隆",
+              ctx: c,
+              run: (c) => {
+                this.displayDialog({
+                  title: "克隆",
+                });
+              },
             },
           ],
         },

@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
 import StartMenu from "../components/StartMenu.vue";
 import ConnectList from "../components/ConnectList.vue";
 import GlobleSetting from "../components/GlobleSetting.vue";

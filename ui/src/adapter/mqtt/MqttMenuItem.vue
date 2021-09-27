@@ -54,6 +54,7 @@ export default defineComponent({
   methods: {
     ...mapActions({
       collectMenu: "app/collectMenu",
+      displayDialog: "app/displayDialog",
     }),
     contextMenu(c, e: Event) {
       e.preventDefault();
@@ -75,11 +76,14 @@ export default defineComponent({
           name: "新建订阅",
           ctx: c,
           run: (c) => {
-            console.log("创建订阅");
+            this.displayDialog({
+              title: "新建订阅",
+            });
           },
         },
       ]);
     },
+
     updateCtx(c: any) {
       c.open = !c.open;
       this.$router.push({

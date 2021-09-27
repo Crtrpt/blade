@@ -7,7 +7,10 @@
       class="py-2 flex-grow xbar"
       :content="list"
     ></MqttContentList>
-    <mqtt-payload-editor v-model="payload"></mqtt-payload-editor>
+    <mqtt-payload-editor
+      v-model="payload"
+      class="shadow-md"
+    ></mqtt-payload-editor>
   </div>
 </template>
 

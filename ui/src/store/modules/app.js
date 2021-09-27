@@ -10,6 +10,12 @@ var App = {
       },
       collectMenu: [],
       contextMenu: [],
+      //弹框
+      dialog: {
+        component:"about",
+        display:false,
+        title:""
+      },
     };
   },
   getters: {
@@ -22,6 +28,12 @@ var App = {
     getMenuList(state) {
       return state.contextMenu;
     },
+    dialog(state) {
+      return state.dialog
+    },
+    dialogDisplay(state) {
+      return state.dialog.display;
+    }
   },
   mutations: {
     displayContextMenu(state, ctx) {
@@ -46,6 +58,16 @@ var App = {
 
     closeMenu(state) {
       state.menuDisplay.display = false;
+    },
+    closeDialog(state) {
+      state.dialog.display = false;
+    },
+    displayDialog(state, payload) {
+      state.dialog = {
+        ...state.dialog,
+        ...payload,
+        display:true
+      }
     }
   },
   actions: {
@@ -57,6 +79,12 @@ var App = {
     },
     closeMenu(context) {
       context.commit("closeMenu");
+    },
+    closeDialog(context) {
+      context.commit("closeDialog");
+    },
+    displayDialog(context,payload) {
+      context.commit("displayDialog",payload);
     }
   },
 };
